@@ -1,17 +1,14 @@
 const revealedElements = document.querySelectorAll('.reveal');
 
-function appearance(el) {
-    const {top, bottom} = el.getBoundingClientRect();
-    
-    if (top > 0 && top < window.innerHeight || bottom > 0 && bottom < window.innerHeight ) {
-        el.classList.add('reveal_active');
-    } else {
-        el.classList.remove('reveal_active');
-    }
-}
+window.addEventListener ('scroll',() =>{
+    for (let i = 0; i < revealedElements.length; i++){
+        let tableElement = revealedElements[i];
+        let elementsPositions = tableElement.getBoundingClientRect();
 
-for(let revealedElement of revealedElements) {
-    setInterval (() => {
-        window.addEventListener('scroll', appearance(revealedElement))
-    }, 200);
-}
+        if (elementsPositions.top < window.innerHeight) {
+            tableElement.classList.add('reveal_active');
+        } else {
+            tableElement.classList.remove('reveal_active');
+        }
+    }
+})
