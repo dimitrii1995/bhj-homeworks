@@ -1,11 +1,11 @@
 const hastoolTip = document.querySelectorAll('.has-tooltip');
 const tooltip = document.createElement('div');
 
+tooltip.className = 'tooltip';
+
 hastoolTip.forEach(element => {
     element.addEventListener('click', event => {
         event.preventDefault();
-       
-        tooltip.className = 'tooltip';
         
         activated = event.target;
 
